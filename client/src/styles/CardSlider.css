@@ -1,0 +1,84 @@
+/* CardSlider.css */
+/* .slick-prev::before, .slick-next::before,.slick-prev,.slick-next{
+background-color: rgb(39, 96, 145);
+margin: auto;
+} */
+
+.slick-next {
+  right: 0;
+  z-index: -1;
+}
+
+.slick-prev {
+  z-index: -1;
+}
+
+.card-slider-container:hover {
+
+  .slick-prev::before,
+  .slick-next::before,
+  .slick-prev,
+  .slick-next {
+    color: rgb(241, 230, 230);
+    z-index: 1;
+    height: 2rem;
+    width: 2rem;
+    background-color: rgb(191, 186, 186);
+  }
+
+}
+
+/* Styling for the card container */
+.card-slider-container {
+  width: 100%;
+  /* Set the width to 80% of the screen */
+  margin: 0%;
+  /* Center the slider */
+}
+
+/* Make sure Slick slides are properly laid out */
+.slick-slide {
+  margin: 1rem;
+  /* Add spacing between the cards */
+}
+.slick-track {
+  display: flex;
+}
+
+/* Card styling */
+.card {
+  background: #fff;
+  border: 2px solid #ddd;
+  /* Light border around each card */
+  border-radius: 8px;
+  /* Rounded corners for each card */
+  overflow: hidden;
+  /* Ensure content does not overflow the card */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Card hover effect */
+.card:hover {
+  transform: translateY(-5px);
+  /* Slight lift effect on hover */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  /* Subtle shadow effect */
+}
+
+
+/* Card content styling */
+.card-content {
+  padding: 1rem;
+  /* Padding inside the content section */
+  text-align: center;
+  /* Center-align text */
+}
+
+.card-content h3 {
+  margin-top: 1rem;
+  /* Margin to separate title from the image */
+  font-size: 1.2rem;
+  /* Title font size */
+  color: #333;
+  /* Dark text color */
+}
