@@ -1,12 +1,14 @@
 import { useState } from "react";
+import { FaEdit, FaSave, FaTimes } from "react-icons/fa";
+import API_BASE_URL from "../../config/api";
 
 export default function ProfileInfo({ user, setUser }) {
   const [isEditing, setIsEditing] = useState(false);
-  const [newName, setNewName] = useState(user?.name || "");
+  const [newName, setNewName] = useState(user?.Name || "");
 
   const handleSave = async () => {
     try {
-      const res = await fetch(`http://localhost:8000/user/profile/${user.Email}`, {
+      const res = await fetch(`${API_BASE_URL}/user/profile/${user.Email}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name: newName }),
@@ -20,43 +22,94 @@ export default function ProfileInfo({ user, setUser }) {
     }
   };
 
+  const handleCancel = () => {
+    setNewName(user?.Name || "");
+    setIsEditing(false);
+  };
+
   return (
-    <div>
-      <h1 className="text-2xl font-bold mb-6">My Profile</h1>
-      <div className="space-y-4 mb-6">
+    <div className="bg-white rounded-2xl shadow-md overflow-hidden 
+                    w-[95%] sm:w-[90%] md:w-[80%] lg:w-[60%] 
+                    mx-auto my-6 sm:my-10 transition-all duration-300">
+      {/* Header */}
+      <h1 className="text-2xl sm:text-3xl font-bold text-gray-800 
+                     p-4 sm:p-6 border-b border-gray-200 
+                     text-center sm:text-left">
+        My Profile
+      </h1>
+
+      {/* Profile Content */}
+      <div className="p-4 sm:p-6 space-y-5 sm:space-y-6">
+        {/* Name Field */}
         <div>
-          <label className="block text-gray-600 text-sm mb-1">Name</label>
+          <label className="block text-sm sm:text-base font-medium text-gray-700 mb-1">
+            Name
+          </label>
           {isEditing ? (
             <input
               type="text"
               value={newName}
               onChange={(e) => setNewName(e.target.value)}
-              className="w-full p-2 border rounded-lg"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm
+                         focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500
+                         transition duration-200 text-gray-800 text-base sm:text-lg"
             />
           ) : (
-            <p className="p-2 bg-gray-100 rounded-lg">{user.Name}</p>
+            <p className="w-full px-4 py-2 bg-gray-100 text-gray-800 rounded-lg 
+                         text-base sm:text-lg break-words">
+              {user.Name}
+            </p>
           )}
         </div>
 
+        {/* Email Field */}
         <div>
-          <label className="block text-gray-600 text-sm mb-1">Email</label>
-          <p className="p-2 bg-gray-200 rounded-lg text-gray-600">{user.Email}</p>
+          <label className="block text-sm sm:text-base font-medium text-gray-700 mb-1">
+            Email
+          </label>
+          <p className="w-full px-4 py-2 bg-gray-200 text-gray-600 rounded-lg 
+                       text-base sm:text-lg break-words cursor-not-allowed">
+            {user.Email}
+          </p>
         </div>
 
-        {isEditing ? (
-          <div className="flex gap-3">
-            <button onClick={handleSave} className="px-4 py-2 bg-green-600 text-white rounded-lg">
-              Save
+        {/* Buttons */}
+        <div
+          className="flex flex-col sm:flex-row sm:justify-end gap-3 sm:gap-4 pt-4 border-t border-gray-200"
+        >
+          {isEditing ? (
+            <>
+              <button
+                onClick={handleSave}
+                className="flex justify-center items-center gap-2 px-5 py-2.5 
+                           bg-green-600 text-white font-semibold rounded-lg shadow-md
+                           hover:bg-green-700 transition duration-200 w-full sm:w-auto"
+              >
+                <FaSave />
+                Save
+              </button>
+              <button
+                onClick={handleCancel}
+                className="flex justify-center items-center gap-2 px-5 py-2.5 
+                           bg-gray-500 text-white font-semibold rounded-lg shadow-md
+                           hover:bg-gray-600 transition duration-200 w-full sm:w-auto"
+              >
+                <FaTimes />
+                Cancel
+              </button>
+            </>
+          ) : (
+            <button
+              onClick={() => setIsEditing(true)}
+              className="flex justify-center items-center gap-2 px-5 py-2.5 
+                         bg-blue-600 text-white font-semibold rounded-lg shadow-md
+                         hover:bg-blue-700 transition duration-200 w-full sm:w-auto"
+            >
+              <FaEdit />
+              Edit Profile
             </button>
-            <button onClick={() => setIsEditing(false)} className="px-4 py-2 bg-gray-400 text-white rounded-lg">
-              Cancel
-            </button>
-          </div>
-        ) : (
-          <button onClick={() => setIsEditing(true)} className="px-4 py-2 bg-blue-600 text-white rounded-lg">
-            Edit
-          </button>
-        )}
+          )}
+        </div>
       </div>
     </div>
   );

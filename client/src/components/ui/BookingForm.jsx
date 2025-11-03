@@ -1,6 +1,7 @@
 import { useState, useEffect, useContext } from "react";
 import { useLocation } from "react-router-dom";
 import { UserContext } from "../../pages/Layout";
+import API_BASE_URL from "../../config/api";
 
 export default function BookingForm() {
     const { state } = useLocation();
@@ -23,7 +24,7 @@ export default function BookingForm() {
 
     // Fetch TravelAddOns from backend
     useEffect(() => {
-        fetch("http://localhost:8000/tours/travel-addons")
+        fetch(`${API_BASE_URL}/tours/travel-addons`)
             .then((res) => res.json())
             .then((data) => setTravelAddons(data))
             .catch((err) => console.error(err));
@@ -64,7 +65,7 @@ export default function BookingForm() {
         const bookingData = {
             tourId: tour._id,
             travelerName: Name,
-            email: user.email,
+            email: user.Email,
             phone: "9876543210",
             numberOfTravelers: guests,
             departureCity,
@@ -77,7 +78,7 @@ export default function BookingForm() {
         };
         console.log("Booking Data:", bookingData);
         try {
-            const res = await fetch("http://localhost:8000/booking/", {
+            const res = await fetch(`${API_BASE_URL}/booking/`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(bookingData)

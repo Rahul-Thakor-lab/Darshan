@@ -10,6 +10,7 @@ import Layout from './pages/Layout.jsx'
 import TourList from './features/tours/tourList.jsx'
 import Profile from './pages/Profile.jsx'
 import AdminProfile from './pages/Admin/AdminProfile.jsx'
+import Services from './pages/service.jsx'
 
 let allRoutes = createBrowserRouter([
   {
@@ -27,6 +28,10 @@ let allRoutes = createBrowserRouter([
       {
         path: 'contact',
         element: <Contact />
+      },
+      {
+        path: 'service',
+        element: <Services />
       },
       {
         path: 'tourDetails/:id',

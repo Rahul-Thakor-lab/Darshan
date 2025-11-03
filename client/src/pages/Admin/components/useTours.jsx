@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import API_BASE_URL from "../../../config/api";
 
 export default function useTours() {
   const [tours, setTours] = useState([]);
@@ -12,7 +13,7 @@ export default function useTours() {
 
   const getAllTours = async () => {
     try {
-      const res = await fetch("http://localhost:8000/tours");
+      const res = await fetch(`${API_BASE_URL}/tours`);
       if (!res.ok) throw new Error("Failed to fetch tours");
       const data = await res.json();
       setTours(data);

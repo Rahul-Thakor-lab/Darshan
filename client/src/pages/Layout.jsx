@@ -21,12 +21,19 @@ export default function Layout() {
   return (
     <UserContext.Provider value={{ user, setUser }}>
       <SystemSettingsProvider>
-        <div className="min-h-screen">
+        <div className="min-h-screen flex flex-col bg-gray-50 w-full overflow-x-hidden">
+          {/* Header */}
           <Header onLoginClick={() => setIsLoginOpen(true)} user={user} />
-          <main className="flex-1 container">
+
+          {/* Main Content (OUTLET) */}
+          <main className="flex-1 w-full overflow-x-hidden">
             <Outlet />
           </main>
+
+          {/* Footer */}
           <Footer />
+
+          {/* Login Popup */}
           <LoginPopup
             isOpen={isLoginOpen}
             onClose={() => setIsLoginOpen(false)}

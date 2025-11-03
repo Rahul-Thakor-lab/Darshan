@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useLocation, Link } from "react-router-dom";
 import TourCard from "./TourCard.jsx"; // This now imports your new horizontal card
+import API_BASE_URL from "../../config/api.js";
 
 export default function TourList() {
   const [tours, setTours] = useState([]);
@@ -20,7 +21,7 @@ export default function TourList() {
     const fetchTours = async () => {
       try {
         setLoading(true);
-        const res = await fetch(`http://localhost:8000/tours/find?destination=${encodeURIComponent(destination)}`);
+        const res = await fetch(`${API_BASE_URL}/tours/find?destination=${encodeURIComponent(destination)}`);
         const data = await res.json();
         setTours(data);
       } catch (err) {

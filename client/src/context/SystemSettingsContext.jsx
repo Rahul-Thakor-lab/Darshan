@@ -1,4 +1,5 @@
 import { createContext, useContext, useState, useEffect } from "react";
+import API_BASE_URL from "../config/api";
 
 const SystemSettingsContext = createContext();
 
@@ -8,7 +9,7 @@ export const SystemSettingsProvider = ({ children }) => {
   // Fetch settings from backend
   const fetchSettings = async () => {
     try {
-      const response = await fetch("http://localhost:8000/settings/getSetting");
+      const response = await fetch(`${API_BASE_URL}/settings/getSetting`);
       const data = await response.json();
       setSettings(data);
     } catch (err) {

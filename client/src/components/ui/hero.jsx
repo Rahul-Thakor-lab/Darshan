@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSystemSettings } from "../../context/SystemSettingsContext";
+import { FaSearch } from "react-icons/fa";
 
 export default function Hero() {
   const systemSettings = useSystemSettings().settings;
@@ -13,41 +14,49 @@ export default function Hero() {
     }
   };
 
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") handleSearch();
+  };
+
   return (
     <div
-      className="relative w-full h-[40rem] bg-cover bg-center"
+      className="relative w-full h-[28rem] sm:h-[35rem] md:h-[40rem] lg:h-[45rem] bg-cover bg-center flex items-center justify-center"
       style={{
         backgroundImage: `url(${systemSettings?.hero || "/default-logo.jpg"})`,
       }}
     >
-      <div className="absolute inset-0 bg-black opacity-40 z-10"></div>
+      {/* Overlay */}
+      <div className="absolute inset-0 bg-black/50 z-10"></div>
 
-      <section className="relative h-screen flex items-center justify-center text-center">
-        <div className="relative z-10 p-6 max-w-4xl mx-auto">
-          <h1 className="text-5xl md:text-7xl font-extrabold text-white leading-tight mb-4 drop-shadow-lg">
-            DARSHAN
-          </h1>
-          <p className="text-xl md:text-2xl text-white mb-8 drop-shadow-md">
-            with maximum safety
-          </p>
+      {/* Hero Content */}
+      <section className="relative z-20 w-full px-4 sm:px-8 md:px-12 flex flex-col items-center text-center">
+        {/* Title */}
+        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-white leading-tight mb-3 sm:mb-4 drop-shadow-lg">
+          DARSHAN
+        </h1>
 
-          <div className="flex justify-center items-center bg-white rounded-lg overflow-hidden shadow-lg max-w-md mx-auto">
-            <input
-              type="text"
-              value={destination}
-              onChange={(e) => setDestination(e.target.value)}
-              className="p-3 flex-grow outline-none text-gray-700"
-              placeholder="Search Destination (e.g., Ayodhya)"
-            />
-            <button
-              onClick={handleSearch}
-              className="bg-orange-500 hover:bg-orange-600 text-white font-semibold px-6 py-3 rounded-r-lg transition-all"
-            >
-              Search
-            </button>
-          </div>
+        {/* Subtitle */}
+        <p className="text-lg sm:text-xl md:text-2xl text-white mb-6 sm:mb-8 drop-shadow-md">
+          with maximum safety
+        </p>
+
+        {/* Google-style Search Bar */}
+        <div className="flex items-center bg-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 w-full max-w-sm sm:max-w-md md:max-w-lg px-5 py-3">
+          <FaSearch
+            onClick={handleSearch}
+            className="text-gray-500 w-5 h-5 mr-3 cursor-pointer hover:text-orange-500 transition-colors"
+          />
+          <input
+            type="text"
+            value={destination}
+            onChange={(e) => setDestination(e.target.value)}
+            onKeyDown={handleKeyDown}
+            className="flex-grow text-gray-700 text-base sm:text-lg outline-none bg-transparent"
+            placeholder="Search destination..."
+          />
         </div>
       </section>
     </div>
   );
 }
+

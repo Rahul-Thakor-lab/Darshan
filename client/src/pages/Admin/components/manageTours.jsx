@@ -3,6 +3,7 @@ import ToursTable from "./toursTable";
 import TourFormModal from "./TourFormModal";
 import ViewTourModal from "./ViewTourModel";
 import { useState } from "react";
+import API_BASE_URL from "../../../config/api";
 
 export default function ManageTours() {
   const {
@@ -70,7 +71,7 @@ export default function ManageTours() {
     setFormData({ ...formData, [field]: [...formData[field], ""] });
   };
 
-  // --------------- Add Tour ----------------
+  // ---------- Add Tour ----------
   const handleSubmitAdd = async (e) => {
     e.preventDefault();
     try {
@@ -88,7 +89,7 @@ export default function ManageTours() {
         if (img instanceof File) formPayload.append("images", img);
       });
 
-      const res = await fetch("http://localhost:8000/tours", {
+      const res = await fetch(`${API_BASE_URL}/tours`, {
         method: "POST",
         body: formPayload,
       });
@@ -104,7 +105,7 @@ export default function ManageTours() {
     }
   };
 
-  // --------------- Edit Tour ----------------
+  // ---------- Edit Tour ----------
   const handleSubmitEdit = async (e) => {
     e.preventDefault();
     try {
@@ -127,7 +128,7 @@ export default function ManageTours() {
       });
 
       const res = await fetch(
-        `http://localhost:8000/tours/${selectedTour._id}`,
+        `${API_BASE_URL}/tours/${selectedTour._id}`,
         { method: "PUT", body: formPayload }
       );
 
@@ -143,11 +144,11 @@ export default function ManageTours() {
     }
   };
 
-  // --------------- Delete Tour ----------------
+  // ---------- Delete Tour ----------
   const handleDelete = async (id) => {
     if (!window.confirm("Are you sure you want to delete this tour?")) return;
     try {
-      const res = await fetch(`http://localhost:8000/tours/${id}`, {
+      const res = await fetch(`${API_BASE_URL}/tours/${id}`, {
         method: "DELETE",
       });
       if (!res.ok) throw new Error("Failed to delete tour");
@@ -160,20 +161,23 @@ export default function ManageTours() {
   };
 
   return (
-    <div className="p-6 bg-gray-50 rounded-xl shadow-sm">
+    <div className="p-4 sm:p-6 bg-gray-50 rounded-xl shadow-sm w-full overflow-x-auto">
       {/* Header + Search */}
-      <div className="flex flex-col sm:flex-row justify-between items-center mb-6 gap-3">
-        <h1 className="text-3xl font-bold text-indigo-700">Manage Tours</h1>
-        <div className="flex gap-2">
+      <div className="flex flex-col lg:flex-row justify-between items-center mb-6 gap-4">
+        <h1 className="text-2xl sm:text-3xl font-bold text-indigo-700 text-center lg:text-left">
+          Manage Tours
+        </h1>
+
+        <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
           <input
             type="text"
             placeholder="Search tour..."
             value={searchTerm}
             onChange={(e) => handleSearch(e.target.value)}
-            className="border px-3 py-2 rounded-lg outline-none focus:ring-2 focus:ring-indigo-400"
+            className="border px-3 py-2 rounded-lg outline-none focus:ring-2 focus:ring-indigo-400 w-full sm:w-48"
           />
           <select
-            className="border px-3 py-2 rounded-lg outline-none focus:ring-2 focus:ring-indigo-400"
+            className="border px-3 py-2 rounded-lg outline-none focus:ring-2 focus:ring-indigo-400 w-full sm:w-40"
             onChange={(e) => handleSort(e.target.value)}
           >
             <option value="">Sort by</option>
@@ -181,7 +185,7 @@ export default function ManageTours() {
             <option value="price">Price</option>
           </select>
           <button
-            className="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition"
+            className="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition w-full sm:w-auto"
             onClick={() => {
               resetForm();
               setisShowAddModal(true);
@@ -193,17 +197,19 @@ export default function ManageTours() {
       </div>
 
       {/* Table */}
-      <ToursTable
-        filteredTours={filteredTours}
-        handleEdit={handleEdit}
-        handleDelete={handleDelete}
-        handleView={(t) => {
-          setSelectedTour(t);
-          setisShowDetails(true);
-        }}
-      />
+      <div className="overflow-x-auto">
+        <ToursTable
+          filteredTours={filteredTours}
+          handleEdit={handleEdit}
+          handleDelete={handleDelete}
+          handleView={(t) => {
+            setSelectedTour(t);
+            setisShowDetails(true);
+          }}
+        />
+      </div>
 
-      {/* Add Modal */}
+      {/* Modals */}
       {isShowAddModal && (
         <TourFormModal
           show={isShowAddModal}
@@ -217,7 +223,6 @@ export default function ManageTours() {
         />
       )}
 
-      {/* Edit Modal */}
       {isShowEditModal && (
         <TourFormModal
           show={isShowEditModal}
@@ -231,7 +236,6 @@ export default function ManageTours() {
         />
       )}
 
-      {/* View Modal */}
       {isShowDetails && (
         <ViewTourModal
           tour={selectedTour}

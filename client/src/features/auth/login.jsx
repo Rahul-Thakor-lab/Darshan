@@ -1,4 +1,5 @@
 import { useState } from "react";
+import API_BASE_URL from "../../config/api";
 
 export default function LoginPopup({ isOpen, onClose, setUser }) {
   const [step, setStep] = useState("email"); // email | otp
@@ -8,7 +9,7 @@ export default function LoginPopup({ isOpen, onClose, setUser }) {
   // Send OTP API
   const sendOtp = async () => {
     try {
-      const res = await fetch("http://localhost:8000/email/send-otp", {
+      const res = await fetch(`${API_BASE_URL}/email/send-otp`, {
         method: "POST", 
         headers: { "Content-Type": "application/json" }, 
         body: JSON.stringify({ email }),
@@ -32,7 +33,7 @@ export default function LoginPopup({ isOpen, onClose, setUser }) {
     if (!otp.trim()) return;
 
     try {
-      const res = await fetch("http://localhost:8000/email/verify-otp", {
+      const res = await fetch(`${API_BASE_URL}/email/verify-otp`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, otp }),

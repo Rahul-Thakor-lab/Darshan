@@ -1,4 +1,3 @@
-import gallary2 from "../../assets/card2.webp";
 import { useLocation } from "react-router-dom";
 import BookingForm from "../../components/ui/BookingForm";
 import { useState } from "react";
@@ -62,108 +61,7 @@ function tourDetail() {
             <div className="md:col-span-3 space-y-5 m-2">
                 <BookingForm tour={tour} />
             </div>
-            {/* similar tour */}
-            <div className="p-3">
-                <h1 className="text-2xl font-semibold">Similar tour</h1>
-                <div className="flex items-center justify-start gap-4 overflow-x-auto">
-
-                    {/* tour 1 */}
-                    <div className=" w-[13rem] min-w-[13rem] border-2 rounded-lg">
-                        <div>
-                            <img src={gallary2} className="" alt="" />
-                        </div>
-                        <div className="p-2">
-                            <h1 className="text-xl font-semibold">Mountain advanture</h1>
-                            <p className="mr-1">London</p>
-                            <h1 className="text-xl font-semibold">$299</h1>
-                            <p>5 days</p>
-                            <button className="bg-black text-white py-2 px-4 rounded-lg mt-2">Book Now</button>
-                        </div>
-                    </div>
-                    {/* tour 2 */}
-                    <div className=" w-[13rem] min-w-[13rem] border-2 rounded-lg">
-                        <div>
-                            <img src={gallary2} className="" alt="" />
-                        </div>
-                        <div className="p-2">
-                            <h1 className="text-xl font-semibold">Mountain advanture</h1>
-                            <p className="mr-1">London</p>
-                            <h1 className="text-xl font-semibold">$299</h1>
-                            <p>5 days</p>
-                            <button className="bg-black text-white py-2 px-4 rounded-lg mt-2">Book Now</button>
-                        </div>
-                    </div>
-                    {/* tour 3 */}
-                    <div className=" w-[13rem] min-w-[13rem] border-2 rounded-lg">
-                        <div>
-                            <img src={gallary2} className="" alt="" />
-                        </div>
-                        <div className="p-2">
-                            <h1 className="text-xl font-semibold">Mountain advanture</h1>
-                            <p className="mr-1">London</p>
-                            <h1 className="text-xl font-semibold">$299</h1>
-                            <p>5 days</p>
-                            <button className="bg-black text-white py-2 px-4 rounded-lg mt-2">Book Now</button>
-                        </div>
-                    </div>
-                    {/* tour 4 */}
-                    <div className=" w-[13rem] min-w-[13rem] border-2 rounded-lg">
-                        <div>
-                            <img src={gallary2} className="" alt="" />
-                        </div>
-                        <div className="p-2">
-                            <h1 className="text-xl font-semibold">Mountain advanture</h1>
-                            <p className="mr-1">London</p>
-                            <h1 className="text-xl font-semibold">$299</h1>
-                            <p>5 days</p>
-                            <button className="bg-black text-white py-2 px-4 rounded-lg mt-2">Book Now</button>
-                        </div>
-                    </div>
-                    {/* tour 5 */}
-                    <div className=" w-[13rem] min-w-[13rem] border-2 rounded-lg">
-                        <div>
-                            <img src={gallary2} className="" alt="" />
-                        </div>
-                        <div className="p-2">
-                            <h1 className="text-xl font-semibold">Mountain advanture</h1>
-                            <p className="mr-1">London</p>
-                            <h1 className="text-xl font-semibold">$299</h1>
-                            <p>5 days</p>
-                            <button className="bg-black text-white py-2 px-4 rounded-lg mt-2">Book Now</button>
-                        </div>
-                    </div>
-                    {/* tour 6 */}
-                    <div className=" w-[13rem] min-w-[13rem] border-2 rounded-lg">
-                        <div>
-                            <img src={gallary2} className="" alt="" />
-                        </div>
-                        <div className="p-2">
-                            <h1 className="text-xl font-semibold">Mountain advanture</h1>
-                            <p className="mr-1">London</p>
-                            <h1 className="text-xl font-semibold">$299</h1>
-                            <p>5 days</p>
-                            <button className="bg-black text-white py-2 px-4 rounded-lg mt-2">Book Now</button>
-                        </div>
-                    </div>
-
-                    {/* tour 7 */}
-                    <div className=" w-[13rem] min-w-[13rem] border-2 rounded-lg">
-                        <div>
-                            <img src={gallary2} className="" alt="" />
-                        </div>
-                        <div className="p-2">
-                            <h1 className="text-xl font-semibold">Mountain advanture</h1>
-                            <p className="mr-1">London</p>
-                            <h1 className="text-xl font-semibold">$299</h1>
-                            <p>5 days</p>
-                            <button className="bg-black text-white py-2 px-4 rounded-lg mt-2">Book Now</button>
-                        </div>
-                    </div>
-
-
-                </div>
-
-            </div>
+            
 
 
         </>
