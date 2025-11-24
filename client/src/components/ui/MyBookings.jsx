@@ -21,6 +21,35 @@ export default function MyBookings({ user }) {
     fetchBookings();
   }, [user]);
 
+  async function handleCancel(booking) {
+  if (!window.confirm("Are you sure you want to cancel this booking?")) return;
+
+  try {
+    const res = await fetch(`${API_BASE_URL}/booking/cancel`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ id: booking._id }),
+    });
+
+    if (!res.ok) throw new Error("Cancel failed");
+
+    const updated = await res.json();
+
+    // Update UI
+    setBookings((prev) =>
+      prev.map((b) =>
+        b._id === booking._id ? { ...b, status: "Cancelled" } : b
+      )
+    );
+
+    alert(updated.message || "Booking cancelled successfully");
+  } catch (err) {
+    console.error(err);
+    alert("Error cancelling booking");
+  }
+}
+
+
   if (!isBackendOnline) return <Maintenance />;
 
   if (bookings.length === 0) {
@@ -94,16 +123,33 @@ export default function MyBookings({ user }) {
 
             {/* Footer */}
             <div className="bg-gray-50 p-4 sm:p-5 border-t border-gray-200">
-              <div className="flex flex-col sm:flex-row sm:justify-end sm:items-baseline 
-                              gap-1 sm:gap-3 text-center sm:text-right">
-                <span className="text-base sm:text-lg font-medium text-gray-600">
-                  Total:
+              <div className="flex flex-col sm:flex-row sm:justify-between items-center">
+
+                {/* Status */}
+                <span
+                  className={`text-sm sm:text-base font-semibold ${booking.status === "Confirmed"
+                      ? "text-green-700"
+                      : booking.status === "Cancelled"
+                      ? "text-rose-700"
+                      : "text-indigo-400"
+                    }`}
+                >
+                  Status: {booking.status || "Confirmed"}
                 </span>
-                <span className="text-2xl sm:text-3xl font-bold text-green-600">
-                  ₹{booking.totalAmount.toLocaleString()}
-                </span>
+
+                {/* Cancel Button (only if not cancelled already) */}
+                {booking.status === "Confirmed" && (
+                  <button
+                    onClick={() => handleCancel(booking)}
+                    className="mt-3 sm:mt-0 bg-red-500 hover:bg-red-600 text-white
+                   px-4 py-2 rounded-lg text-sm sm:text-base font-medium transition"
+                  >
+                    Cancel Booking
+                  </button>
+                )}
               </div>
             </div>
+
           </div>
         ))}
       </div>
