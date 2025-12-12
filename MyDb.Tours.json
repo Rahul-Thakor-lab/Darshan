@@ -1,0 +1,70 @@
+[
+  {
+    "_id": { "$oid": "650000000000000000000003" },
+    "name": "Vaishno Devi Darshan",
+    "duration": "2 Days / 1 Night",
+    "startLocation": "Katra",
+    "pricePerPerson": 8000,
+    "includes": ["Hotel", "Meals", "Darshan Assistance"],
+    "excludes": ["Travel to Katra"],
+    "hotels": ["Budget", "Deluxe"],
+    "images": ["VaishnoDevi1.jpg", "VaishnoDevi2.jpg", "VaishnoDevi3.webp", "VaishnoDevi4.jpg"]
+  },
+  {
+    "_id": { "$oid": "650000000000000000000004" },
+    "name": "Somnath Darshan",
+    "duration": "3 Days / 2 Nights",
+    "startLocation": "Somnath",
+    "pricePerPerson": 9500,
+    "includes": ["Hotel", "Meals", "Local Transport", "Darshan Assistance"],
+    "excludes": ["Travel to Somnath"],
+    "hotels": ["Budget", "Deluxe"],
+    "images": ["Somnath1.webp", "Somnath2.jpg", "Somnath3.jpg", "Somnath4.jpg"]
+  },
+  {
+    "_id": { "$oid": "650000000000000000000002" },
+    "name": "Tirupati Balaji Darshan",
+    "duration": "3 Days / 2 Nights",
+    "startLocation": "Tirupati",
+    "pricePerPerson": 10000,
+    "includes": ["Hotel", "Meals", "Darshan Assistance", "Local Transport"],
+    "excludes": ["Travel to Tirupati"],
+    "hotels": ["Budget", "Deluxe"],
+    "images": ["TirupatiBalaji1.jpg", "TirupatiBalaji2.jpg", "TirupatiBalaji3.jpg"]
+  },
+  {
+    "_id": { "$oid": "650000000000000000000001" },
+    "name": "Rameshwaram Darshan",
+    "duration": "4 Days / 3 Nights",
+    "startLocation": "Madurai",
+    "pricePerPerson": 12000,
+    "includes": ["Hotel", "Meals", "Local Transport", "Sightseeing", "Darshan Assistance"],
+    "excludes": ["Travel to Madurai/Rameshwaram"],
+    "hotels": ["Budget", "Deluxe", "Luxury"],
+    "images": ["Rameshwaram1.jpg", "Rameshwaram2.jpg", "Rameshwaram3.jpg", "Rameshwaram4.jpg", "Rameshwaram5.jpg"]
+  },
+  {
+    "_id": { "$oid": "650000000000000000000005" },
+    "name": "Golden Temple Amritsar",
+    "duration": "3 Days / 2 Nights",
+    "startLocation": "Amritsar",
+    "pricePerPerson": 11000,
+    "includes": ["Hotel", "Meals", "Local Transport", "Darshan Assistance"],
+    "excludes": ["Travel to Amritsar"],
+    "hotels": ["Budget", "Deluxe", "Luxury"],
+    "images": ["GoldenTemple1.jpg", "GoldenTemple2.webp", "GoldenTemple3.jpeg"]
+  },
+  {
+    "_id": { "$oid": "68ee68fc23c65c6d0cf5801c" },
+    "name": "Ayodhya Darshan",
+    "duration": "2 Days / 1 Night",
+    "startLocation": "Uttar Pradesh",
+    "pricePerPerson": 1000,
+    "includes": ["Transport"],
+    "excludes": ["Dinner"],
+    "hotels": ["Taj Hotel"],
+    "images": ["Ayodhya.jpg", "Ayodhya1.webp", "Ayodhya4.avif", "Ayodhya3.webp"],
+    "createdAt": { "$date": "2025-10-14T15:15:08.309Z" },
+    "__v": 0
+  }
+]

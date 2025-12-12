@@ -1,0 +1,44 @@
+[
+  {
+    "_id": { "$oid": "650000000000000000001004" },
+    "city": "Mumbai",
+    "mode": "Flight",
+    "cost": 6000
+  },
+  {
+    "_id": { "$oid": "650000000000000000001001" },
+    "city": "Ahmedabad",
+    "mode": "Flight",
+    "cost": 6500
+  },
+  {
+    "_id": { "$oid": "650000000000000000001003" },
+    "city": "Guwahati",
+    "mode": "Flight",
+    "cost": 7200
+  },
+  {
+    "_id": { "$oid": "650000000000000000001005" },
+    "city": "Kolkata",
+    "mode": "Train",
+    "cost": 3500
+  },
+  {
+    "_id": { "$oid": "650000000000000000001002" },
+    "city": "Delhi",
+    "mode": "Train",
+    "cost": 2800
+  },
+  {
+    "_id": { "$oid": "68e3b8984680f652684306cb" },
+    "city": "Ahmedabad",
+    "mode": "Train",
+    "cost": 1400
+  },
+  {
+    "_id": { "$oid": "650000000000000000001007" },
+    "city": "Ahmedabad",
+    "mode": "Own",
+    "cost": 0
+  }
+]

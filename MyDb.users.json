@@ -1,0 +1,34 @@
+[
+  {
+    "_id": { "$oid": "68cd4fcd409f293c17b6cc1d" },
+    "name": "Super Admin",
+    "email": "admin@example.com",
+    "role": "1",
+    "__v": 0,
+    "createdAt": { "$date": "2025-09-19T12:42:53.464Z" }
+  },
+  {
+    "_id": { "$oid": "68cf5b12409f293c17b6cce6" },
+    "name": "John Doe",
+    "email": "john.doe@example.com",
+    "role": "0",
+    "__v": 0,
+    "createdAt": { "$date": "2025-09-21T01:55:30.791Z" }
+  },
+  {
+    "_id": { "$oid": "68db6d555bdf024a02159d57" },
+    "name": "Jane Smith",
+    "email": "jane.smith@example.com",
+    "role": "0",
+    "__v": 0,
+    "createdAt": { "$date": "2025-09-30T05:40:37.940Z" }
+  },
+  {
+    "_id": { "$oid": "69063ae72461828609101e4a" },
+    "name": "Test User",
+    "email": "test.user@example.com",
+    "role": "0",
+    "__v": 0,
+    "createdAt": { "$date": "2025-11-01T16:52:55.287Z" }
+  }
+]

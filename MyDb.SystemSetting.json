@@ -1,0 +1,13 @@
+[{
+  "_id": {
+    "$oid": "68f452848985e0b55e10abc2"
+  },
+  "about": "1762012648709.jpg",
+  "contact": {
+    "phone": "98765 43210",
+    "email": "info@darshan.com",
+    "address": "Delhi,India"
+  },
+  "hero": "1762011777186.jpg",
+  "logo": "1762012320892.png"
+}]
