@@ -17,5 +17,5 @@ How to Run:
 # you can change server Port Number
 # write Email ID for Send OTP for login User 
 # Write Your Password (Gmail Password from Google)
-# In Mongodb Import Demo data,collection for default otherwise you can create own collection according your collection you want change code
+# In Mongodb Import Dummy data given JSON files collection Automatically Created
 
